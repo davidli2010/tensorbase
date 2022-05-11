@@ -21,6 +21,6 @@ features = ["derive"]
 version = "1.0"
 
 [dev-dependencies]
-baselog = { git = "https://github.com/tensorbase/baselog.git", branch = "main" }
+baselog = { path = "../baselog" }
 walkdir = "2.3"
 chrono-tz = "0.5"

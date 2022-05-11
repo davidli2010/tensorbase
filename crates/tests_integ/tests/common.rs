@@ -1,8 +1,7 @@
 #![allow(dead_code)]
 use client::prelude::{Options, Pool};
-use mysql::prelude::*;
+use mysql::Pool as MyPool;
 use mysql::*;
-use mysql::{Opts as MyOpts, Pool as MyPool};
 use std::convert::TryInto;
 use std::env;
 use url::Url;

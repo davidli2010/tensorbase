@@ -33,6 +33,13 @@ pub struct ColumnInfo {
     pub ordinal: u32,
 }
 
+impl ColumnInfo {
+    #[inline]
+    pub fn data_type(&self) -> BqlType {
+        self.data_type
+    }
+}
+
 //FIXME add ids to Tab/Col model?
 #[derive(PartialEq, Debug, Default)]
 pub struct Table {

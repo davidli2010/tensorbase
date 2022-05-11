@@ -62,18 +62,18 @@ macro_rules! debug {
 macro_rules! seq {
     // Sequences
     ($($v:expr,)*) => {
-        std::array::IntoIter::new([$($v,)*]).collect()
+        IntoIterator::into_iter([$($v,)*]).collect()
     };
     ($($v:expr),*) => {
-        std::array::IntoIter::new([$($v,)*]).collect()
+        IntoIterator::into_iter([$($v,)*]).collect()
     };
 
     // Maps
     ($($k:expr => $v:expr,)*) => {
-        std::array::IntoIter::new([$(($k, $v),)*]).collect()
+        IntoIterator::into_iter([$(($k, $v),)*]).collect()
     };
     ($($k:expr => $v:expr),*) => {
-        std::array::IntoIter::new([$(($k, $v),)*]).collect()
+        IntoIterator::into_iter([$(($k, $v),)*]).collect()
     };
 }
 

@@ -15,7 +15,7 @@
 *   limitations under the License.
 */
 #![allow(dead_code, unused_variables, unused_macros)]
-#![feature(decl_macro, available_parallelism)]
+#![feature(decl_macro)]
 
 pub mod errs;
 pub mod parse;

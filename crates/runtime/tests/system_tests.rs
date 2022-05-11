@@ -95,7 +95,7 @@ fn test_run_commands() -> BaseRtResult<()> {
     assert!(matches!(res, BaseCommandKind::Create));
 
     assert_eq!("default", cctx.get_db());
-    let res = bms.run_commands("use xxx_123".to_string(), &mut cctx)?;
+    let _res = bms.run_commands("use xxx_123".to_string(), &mut cctx)?;
     assert_eq!("xxx_123", cctx.get_db());
 
     let res = bms.run_commands(

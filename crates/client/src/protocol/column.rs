@@ -639,7 +639,7 @@ impl<'a> AsInColumn for FixedColumn<BoxString> {
     unsafe fn into_bytes(&mut self) -> Vec<u8> {
         self.data
             .iter_mut()
-            .map(|mut val| unsafe {
+            .map(|mut val| {
                 let mut buf = Vec::with_capacity(8 + val.len());
                 let _ = (val.len() as u64).encode(&mut buf);
                 let _ = buf.write(as_bytes_bufer_mut(&mut val));

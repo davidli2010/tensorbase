@@ -13,7 +13,9 @@ members = [
     "crates/datafusion",
     "crates/datafusion_tests",
     "crates/parquet",
-    "crates/server_mysql"
+    "crates/server_mysql",
+    "crates/basejit",
+    "crates/baselog",
 ]
 
 [profile.release]

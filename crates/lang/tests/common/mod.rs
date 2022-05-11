@@ -14,9 +14,10 @@
 *   See the License for the specific language governing permissions and
 *   limitations under the License.
 */
-#![feature(const_fn_trait_bound)]
+
 use std::mem::ManuallyDrop;
 
+#[allow(dead_code)]
 pub const unsafe fn transmute<From, To>(from: From) -> To {
     union Transmute<From, To> {
         from: ManuallyDrop<From>,

@@ -165,7 +165,6 @@ impl Default for Tcp {
         Tcp {
             ip_addr: Self::default_ip_addr(),
             port: Self::default_port(),
-            ..Default::default()
         }
     }
 }
@@ -185,7 +184,8 @@ impl Default for Tls {
         Tls {
             ip_addr: Self::default_ip_addr(),
             port: Self::default_port(),
-            ..Default::default()
+            certificate_file: String::new(),
+            private_key_file: String::new(),
         }
     }
 }

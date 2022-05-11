@@ -20,9 +20,9 @@ base = { path = "../base" }
 meta = { path = "../meta" }
 lang = { path = "../lang" }
 engine = { path = "../engine" }
-basejit = { git = "https://github.com/tensorbase/basejit.git", branch = "main" }
+basejit = { path = "../basejit" }
 client = { path = "../client" }
-baselog = { git = "https://github.com/tensorbase/baselog.git", branch = "main" }
+baselog = { path = "../baselog" }
 clickhouse-rs-cityhash-sys = "0.1.2"
 arrow = { path = "../arrow" }
 datafusion = { path = "../datafusion", features = ["simd"] }

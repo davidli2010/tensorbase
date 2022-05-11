@@ -1407,10 +1407,10 @@ mod unit_tests {
         println!("{:?}", t);
         assert_eq!(t.0.columns.len(), 4);
         assert_eq!(t.0.columns[0].0, "`did`"); //FIXME remove `` when parsing id
-        assert_eq!(t.0.columns[0].1.data_type, BqlType::Int(64));
-        assert_eq!(t.0.columns[1].1.data_type, BqlType::LowCardinalityString);
-        assert_eq!(t.0.columns[2].1.data_type, BqlType::String);
-        assert_eq!(t.0.columns[3].1.data_type, BqlType::Decimal(10, 5));
+        assert_eq!(t.0.columns[0].1.data_type(), BqlType::Int(64));
+        assert_eq!(t.0.columns[1].1.data_type(), BqlType::LowCardinalityString);
+        assert_eq!(t.0.columns[2].1.data_type(), BqlType::String);
+        assert_eq!(t.0.columns[3].1.data_type(), BqlType::Decimal(10, 5));
         assert_eq!(t.0.tab_info.partition_cols, "ds,");
         for i in 0u32..4 {
             let od = t.0.columns[i as usize].1.ordinal;
@@ -1437,10 +1437,10 @@ mod unit_tests {
         println!("{:?}", t);
         assert_eq!(t.0.columns.len(), 3);
         assert_eq!(t.0.columns[0].0, "trip_id"); //FIXME remove `` when parsing id
-        assert_eq!(t.0.columns[0].1.data_type, BqlType::UInt(32));
-        assert_eq!(t.0.columns[1].1.data_type, BqlType::DateTime);
+        assert_eq!(t.0.columns[0].1.data_type(), BqlType::UInt(32));
+        assert_eq!(t.0.columns[1].1.data_type(), BqlType::DateTime);
         assert_eq!(
-            t.0.columns[2].1.data_type,
+            t.0.columns[2].1.data_type(),
             BqlType::DateTimeTz(
                 TimeZoneId::from_str("UTC")
                     .map_err(|_| LangError::CreateTableParsingError)?
@@ -1752,9 +1752,9 @@ LIMIT 100;
     }
 
     mod bql {
-        use std::{collections::HashSet, ops::RangeInclusive};
+        use std::collections::HashSet;
 
-        use crate::parse::{parse_where, pretty_parse_pair, seek_to, seek_to_tree};
+        use crate::parse::parse_where;
 
         use super::{pretty_parse_tree, BqlParser, Rule};
         use pest::Parser;

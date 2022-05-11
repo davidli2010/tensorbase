@@ -544,6 +544,7 @@ mod unit_tests {
         Ok(())
     }
 
+    #[allow(non_snake_case)]
     #[test]
     fn test_get_ptk_exps_fn_ptr() -> BaseRtResult<()> {
         let bms_path = "/tmp/xxx";
@@ -570,6 +571,7 @@ mod unit_tests {
         Ok(())
     }
 
+    #[allow(non_snake_case)]
     #[ignore]
     #[test]
     fn stress_test_get_ptk_exps_fn_ptr() -> BaseRtResult<()> {

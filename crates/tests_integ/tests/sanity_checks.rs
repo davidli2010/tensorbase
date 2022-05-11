@@ -6,7 +6,7 @@ use chrono_tz::Tz;
 use client::prelude::types::Decimal;
 use common::{get_ch_pool, get_mysql_pool, get_pool};
 use mysql::prelude::*;
-use mysql::{Opts as MyOpts, Pool as MyPool};
+
 // macro_rules! get {
 //     ($row:ident, $idx: expr, $msg: expr) => {
 //         $row.value($idx)?.expect($msg)
@@ -933,9 +933,9 @@ async fn tests_integ_insert_into_remote_function() -> errors::Result<()> {
         NaiveDate::from_ymd(2011, 2, 28).and_hms(2, 5, 6),
         NaiveDate::from_ymd(2012, 2, 29).and_hms(23, 59, 59),
     ];
-    let dates = apply_offset(&dates, FixedOffset::west(11 * 3600 + 45 * 60));
-    let data = vec![1, 2, 3];
-    let data_i = vec!["abc", "efg", "hello world"];
+    let _dates = apply_offset(&dates, FixedOffset::west(11 * 3600 + 45 * 60));
+    let _data = vec![1, 2, 3];
+    let _data_i = vec!["abc", "efg", "hello world"];
 
     {
         let sql = "insert into function remote('127.0.0.1:9528', test_remote_func) select * from test_remote_func";

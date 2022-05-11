@@ -705,7 +705,7 @@ mod unit_tests {
         // println!("encoded block: {:?}", &bs[..]);
         // println!("bs.as_ptr: {:p}", bs.as_ptr());
 
-        bs.split_to(2); //skip msg protocol header
+        let _ = bs.split_to(2); //skip msg protocol header
         let mut blk2 = Block::default();
         blk2.decode_from(&mut &bs[..])?;
         // println!("block2: {:?}", blk2);
@@ -751,8 +751,8 @@ mod unit_tests {
         println!("encoded block: {:?}", &bs[..]);
         // println!("bs.as_ptr: {:p}", bs.as_ptr());
 
-        bs.split_to(2); //skip msg protocol header
-                        //decompress
+        let _ = bs.split_to(2); //skip msg protocol header
+                                //decompress
         let nread = process_data_blk(&mut &bs[..], &mut _bs, true)?;
         assert!(nread > 0);
         println!(
@@ -813,8 +813,8 @@ mod unit_tests {
         println!("encoded block: {:?}", &bs[..]);
         // println!("bs.as_ptr: {:p}", bs.as_ptr());
 
-        bs.split_to(2); //skip msg protocol header
-                        //decompress
+        let _ = bs.split_to(2); //skip msg protocol header
+                                //decompress
         let nread = process_data_blk(&mut &bs[..], &mut _bs, true)?;
         assert!(nread > 0);
         println!(

@@ -18,7 +18,6 @@
 #![feature(
     backtrace,
     specialization,
-    llvm_asm,
     vec_into_raw_parts,
     core_intrinsics,
     once_cell,

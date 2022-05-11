@@ -1,24 +1,13 @@
-use std::{
-    collections::HashMap,
-    ffi::{c_void, CString},
-    fs,
-    path::Path,
-    ptr,
-    time::Instant,
-};
+use std::time::Instant;
 
-use base::{debug, mmap::mm_file_ro};
 use engine::errs::EngineError;
 use engine::errs::EngineResult;
 use meta::{
-    store::parts::{open_file_as_fd, CoPaInfo, PartStore},
-    types::{BqlType, ColumnInfo, Id},
+    store::parts::{CoPaInfo, PartStore},
+    types::{BqlType, Id},
 };
 
-use arrow::{
-    array::{ArrayData, Int32Array},
-    datatypes::{Int32Type, SchemaRef},
-};
+use arrow::array::ArrayData;
 use arrow::{
     array::{ArrayRef, UInt32Array},
     ffi::FFI_ArrowArray,
@@ -29,22 +18,16 @@ use arrow::{
     buffer::Buffer,
     datatypes::{DataType, Field, Schema},
 };
+use datafusion::physical_plan::collect;
 use datafusion::{
     datasource::MemTable,
-    physical_plan::{
-        coalesce_batches::CoalesceBatchesExec, memory::MemoryExec,
-        repartition::RepartitionExec, ExecutionPlan, Partitioning,
-    },
     prelude::{ExecutionConfig, ExecutionContext},
 };
-use datafusion::{datasource::TableProvider, physical_plan::collect};
-use futures::StreamExt;
 use std::sync::Arc;
 
 //FIXME a dedicate nyc taxi test suite needed
 const TID: Id = 4;
 const CID0: Id = TID + 1;
-const CID1: Id = TID + 2;
 
 #[tokio::test]
 #[ignore]
@@ -85,13 +68,13 @@ fn init_copas2(cis: Vec<(Id, BqlType)>) -> Vec<Vec<CoPaInfo>> {
 async fn run_ker_test_arrow(
     query_id: &str,
     cis: Vec<(Id, BqlType)>,
-    exprs: Vec<&str>,
-    expected_results_rows_wised: Vec<Vec<i64>>,
-    filters_expr: Option<&str>,
+    _exprs: Vec<&str>,
+    _expected_results_rows_wised: Vec<Vec<i64>>,
+    _filters_expr: Option<&str>,
     sql: &str,
 ) -> EngineResult<()> {
     // let sql = "select numbers from system.numbers limit 10";
-    let mut qs = engine::types::QueryState::default();
+    let _qs = engine::types::QueryState::default();
 
     let timer = Instant::now();
 

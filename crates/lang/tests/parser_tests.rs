@@ -15,7 +15,7 @@
 *   limitations under the License.
 */
 
-#![feature(const_fn_union, untagged_unions, const_raw_ptr_deref)]
+#![feature(untagged_unions)]
 
 use lang::parse::pretty_parse_tree;
 use lang::parse::BqlParser;
@@ -63,14 +63,15 @@ fn parse_tpch() {
     }
 }
 
-// #[test]
+#[ignore]
+#[test]
 fn integ_test_parse_tpcds_full() {
     let paths = read_dir(common::get_test_root() + "tpcds_full").unwrap();
     paths.for_each(|p: io::Result<DirEntry>| {
         let p = p.unwrap().path();
         println!("----- for {:?}:", p.file_name());
         let s = read_to_string(p).unwrap();
-        let cmd_node =
+        let _cmd_node =
             BqlParser::parse(cmd, s.as_ref()).unwrap_or_else(|e| panic!("{}", e));
         // println!("  {}\n", cmd_node);
     })

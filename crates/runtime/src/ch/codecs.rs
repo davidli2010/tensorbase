@@ -136,7 +136,7 @@ mod unit_tests {
 
     #[test]
     fn test_block_sanity_check() -> BaseRtResult<()> {
-        let mut bs = BytesMut::with_capacity(10);
+        let bs = BytesMut::with_capacity(10);
 
         // let bch = BlockColumnHeader {
         //     name: "some_field".to_string(),
